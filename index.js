@@ -47,8 +47,12 @@ function formatearNumeroTelefono(numero) {
 }
 
 function esNumeroValido(numeroTelefono) {
-  const numeroSinSigno = numeroTelefono.replace('+', '');
-  return Object.keys(PHONENUMBER_MCC).some(codigo => numeroSinSigno.startsWith(codigo));
+  try {
+    const numero = PhoneNumberUtil.getInstance().parse(numeroTelefono);
+    return PhoneNumberUtil.getInstance().isValidNumber(numero);
+  } catch (error) {
+    return false;
+  }
 }
 
 async function start(file) {
