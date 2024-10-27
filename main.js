@@ -13,8 +13,9 @@ import lodash from 'lodash';
 import chalk from 'chalk';
 import syntaxerror from 'syntax-error';
 import {format} from 'util';
-import pino from 'pino';
-import Pino from 'pino';
+import P from 'pino'
+import pino from 'pino'
+import Pino from 'pino'
 import {Boom} from '@hapi/boom';
 import {makeWASocket, protoType, serialize} from './src/libraries/simple.js';
 import {Low, JSONFile} from 'lowdb';
