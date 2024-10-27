@@ -33,3 +33,4 @@ jobs:
       - name: Fail if there are conflicts
         if: steps.merge.outputs.conflict == 'true'
         run: exit 1
+        
