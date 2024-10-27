@@ -19,7 +19,10 @@ import {Boom} from '@hapi/boom';
 import {makeWASocket, protoType, serialize} from './src/libraries/simple.js';
 import {Low, JSONFile} from 'lowdb';
 import store from './src/libraries/store.js';
-const {DisconnectReason, useMultiFileAuthState, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser, PHONENUMBER_MCC} = await import("baileys");
+import pkg from 'google-libphonenumber'
+const { PhoneNumberUtil } = pkg
+const phoneUtil = PhoneNumberUtil.getInstance()
+const { DisconnectReason, useMultiFileAuthState, MessageRetryMap, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser } = await import('@whiskeysockets/baileys')
 import readline from 'readline';
 import NodeCache from 'node-cache';
 const {chain} = lodash;
