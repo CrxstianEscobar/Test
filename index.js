@@ -9,7 +9,7 @@ import chalk from 'chalk';
 import fs from 'fs'; 
 import './config.js';
 
-const { PHONENUMBER_MCC } = await import('baileys');
+const { PhoneNumberUtil } = requiere('google-libphonenumber');
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(__dirname);
 const { say } = cfonts;
