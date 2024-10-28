@@ -59,13 +59,13 @@ async function start(file) {
   if (isRunning) return;
   isRunning = true;
 
-  say('The Mystic\nBot', {
+  say('Heavenly\nTeam', {
     font: 'chrome',
     align: 'center',
     gradient: ['red', 'magenta'],
   });
 
-  say(`Bot creado por Bruno Sobrino`, {
+  say(`Created By Cristian Escobar\nx\nHeavenly Team\nOficial\nEl mejor Bot de WhatsApp`, {
     font: 'console',
     align: 'center',
     gradient: ['red', 'magenta'],
