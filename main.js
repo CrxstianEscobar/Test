@@ -13,17 +13,13 @@ import lodash from 'lodash';
 import chalk from 'chalk';
 import syntaxerror from 'syntax-error';
 import {format} from 'util';
-import P from 'pino'
-import pino from 'pino'
-import Pino from 'pino'
+import pino from 'pino';
+import Pino from 'pino';
 import {Boom} from '@hapi/boom';
 import {makeWASocket, protoType, serialize} from './src/libraries/simple.js';
 import {Low, JSONFile} from 'lowdb';
 import store from './src/libraries/store.js';
-import pkg from 'google-libphonenumber'
-const { PhoneNumberUtil } = pkg
-const phoneUtil = PhoneNumberUtil.getInstance()
-const { DisconnectReason, useMultiFileAuthState, MessageRetryMap, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser } = await import('@whiskeysockets/baileys')
+const {DisconnectReason, useMultiFileAuthState, fetchLatestBaileysVersion, makeCacheableSignalKeyStore, jidNormalizedUser, PHONENUMBER_MCC} = await import("baileys");
 import readline from 'readline';
 import NodeCache from 'node-cache';
 const {chain} = lodash;
@@ -159,7 +155,7 @@ const connectionOptions = {
     //msgRetryCounterMap,
     defaultQueryTimeoutMs: undefined,
     cachedGroupMetadata: (jid) => global.conn.chats[jid] ?? {},
-    version,
+    version: [2, 3000, 1015901307],
     //userDeviceCache: msgRetryCounterCache <=== quien fue el pendejo?????
 };
 
@@ -170,14 +166,21 @@ if (opcion === '2' || methodCode) {
 opcion = '2'
 if (!conn.authState.creds.registered) {  
 if (MethodMobile) throw new Error('No se puede usar un código de emparejamiento con la API móvil')
-
-let numeroTelefono
+//🤍
+const phoneNumber = await question(chalk.blue(' 🟣  Por favor, Ingrese el número de WhatsApp.\n "CONSEJO: Copie el número de WhatsApp y péguelo en la consola."\n "Ejemplo: 573138954963"\n'))
+  
+  if (conn.requestPairingCode) {
+    let code = await conn.requestPairingCode(phoneNumber);
+    code = code?.match(/.{1,4}/g)?.join("-") || code;
+    console.log(chalk.magenta(`👑 CÓDIGO DE VINCULACIÓN 👑:`, code))
+  } else {
+  }
+}
+}
+/*let numeroTelefono
 if (!!phoneNumber) {
 numeroTelefono = phoneNumber.replace(/[^0-9]/g, '')
-if (!phoneNumber.startsWith('+')) {
-phoneNumber = `+${phoneNumber}`
-}
-} while (!await isValidPhoneNumber(phoneNumber)) {
+if (!Object.keys(PHONENUMBER_MCC).some(v => numeroTelefono.startsWith(v))) {
 console.log(chalk.bgBlack(chalk.bold.redBright("Comience con el código de país de su número de WhatsApp.\nEjemplo: +5219992095479\n")))
 process.exit(0)
 }} else {
@@ -191,15 +194,14 @@ break
 console.log(chalk.bgBlack(chalk.bold.redBright("Por favor, escriba su número de WhatsApp.\nEjemplo: +5219992095479.\n")))
 }}
 rl.close()  
-} 
-
+}
+*/
         setTimeout(async () => {
             let codigo = await conn.requestPairingCode(numeroTelefono)
             codigo = codigo?.match(/.{1,4}/g)?.join("-") || codigo
             console.log(chalk.yellow('[ ℹ️ ] introduce el código de emparejamiento en WhatsApp.'));
             console.log(chalk.black(chalk.bgGreen(`Su código de emparejamiento: `)), chalk.black(chalk.white(codigo)))
         }, 3000)
-}}
 }
 
 conn.isInit = false;
@@ -549,18 +551,3 @@ function clockString(ms) {
   return [d, 'd ️', h, 'h ', m, 'm ', s, 's '].map((v) => v.toString().padStart(2, 0)).join('');
 }
 _quickTest().catch(console.error);
-
-async function isValidPhoneNumber(number) {
-try {
-number = number.replace(/\s+/g, '')
-// Si el número empieza con '+521' o '+52 1', quitar el '1'
-if (number.startsWith('+521')) {
-number = number.replace('+521', '+52'); // Cambiar +521 a +52
-} else if (number.startsWith('+52') && number[4] === '1') {
-number = number.replace('+52 1', '+52'); // Cambiar +52 1 a +52
-}
-const parsedNumber = phoneUtil.parseAndKeepRawInput(number)
-return phoneUtil.isValidNumber(parsedNumber)
-} catch (error) {
-return false
-}}
