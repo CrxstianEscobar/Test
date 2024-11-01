@@ -15,7 +15,7 @@ const handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, i
     // const pp = imagen7;
 
     // let vn = './src/assets/audio/01J673Y3TGCFF1D548242AX68Q.mp3'
-    const img = './src/assets/images/menu/languages/es/menu.png';
+    const img = './src/assets/images/menu/languages/es/allmenu.png';
     const d = new Date(new Date + 3600000);
     const locale = 'es-ES';
     const week = d.toLocaleDateString(locale, { weekday: 'long' });
@@ -553,7 +553,7 @@ ${tradutor.texto1[9]} ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌')
     conn.reply(m.chat, tradutor.texto1[29], m);
   }
 };
-handler.command = /^(menu|menú|memu|memú|help|info|comandos|allmenu|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
+handler.command = /^(allmenu|allmenú)$/i;
 handler.exp = 50;
 handler.fail = null;
 export default handler;
