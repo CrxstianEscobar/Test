@@ -16,42 +16,9 @@ global.isBaileysFail = false
 global.defaultLenguaje = 'es';
 
 global.owner = [
-  ['5219992095479', '👑 Mystic - Creador 👑', true],
-  ['51940617554', '💫 Mystic - Collaborator 2 💫', true],
-  ['51996089079', '💫 Mystic - Collaborator 3 💫', true],
-  ['5218442286089', '💫 Mystic - Collaborator 4 💫', true],
-  ['50246028932', '💫 Mystic - Collaborator 5 💫', true],
-  ['5212412377467', '💫 Mystic - Collaborator 6 💫', true],
-  ['5215517489568', '💫 Mystic - Rey Endymion 💫', false],
-  ['59895555511', '💫 Mystic - Collaborator 8 💫', true],
-  ['573012482597', '💫 Mystic - OfcDiego', true],
-  ['59175655964', '💫 Mystic - By Alba070503 💫', true],
-  ['5493794297363', '💫 Mystic - Gabriel Ofc', true], 
-  ['393518398856', '💫 Mystic - Tester Fabri115💫', true],
-  ['212781160203', '💫 Mystic - Saad 💫', true], 
-  ['5217778573223', '💫 Mystic - Sarethh 💫', true],
-  ['593968585283'],
-  ['5492266466080'],
-  ['5218442114446'],
-  ['59894808483'],
-  ['593980586516'], 
-  ['595975740803'],  
-  ['5492266613038'],
-  ['50497150165'],
-  ['51906662557'],
-  ['573183650526'], 
-  ['5217441298510'], 
-  ['5217294888993'],
-  ['595992611272'],
-  ['5219992843892'],
-  ['5493795319019'],
-  ['573147616444'], 
-  ['5219991402134'],
-  ['5219996125657'],
-  ['5492215034412'],
-  ['584125778026'],
-  ['5492964650915'],
-  ['5218444937407']
+  ['51927238856', '@𝑈𝑠𝑥𝑟.𝐶𝑟𝑥𝑥𝑠 🥀', true],
+  ['51965911060'],
+  ['15099774744']
 ];
 
 global.suittag = ['5219993404349'];
@@ -60,12 +27,12 @@ global.prems = ['51995386439'];
 // API
 global.BASE_API_DELIRIUS = "https://deliriussapi-oficial.vercel.app";
 
-global.packname = 'Sticker';
-global.author = 'The Mystic - Bot';
-global.wm = 'The Mystic - Bot';
-global.titulowm = 'The Mystic - Bot';
-global.titulowm2 = `The Mystic - Bot`
-global.igfg = 'The Mystic - Bot';
+global.packname = 'Xɪᴍᴇ Lᴜxᴇл - MD\n             ʙʏ\n Hᴇʌᴠᴇлʟʏ Ƭᴇᴀᴍ';
+global.author = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
+global.wm = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
+global.titulowm = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
+global.titulowm2 = `𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿`
+global.igfg = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
 global.wait = '*_[ ⏳ ] Cargando..._*';
 
 /*global.imagen1 = fs.createReadStream('./src/assets/images/menu/languages/es/menu.png');
@@ -91,12 +58,12 @@ global.mes = d.toLocaleDateString('es', {month: 'long'});
 global.año = d.toLocaleDateString('es', {year: 'numeric'});
 global.tiempo = d.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true});
 //* ****************************
-global.wm2 = `${dia} ${fecha}\nThe Mystic - Bot`;
-global.gt = 'The Mystic - Bot';
-global.mysticbot = 'The Mystic - Bot';
+global.wm2 = `${dia} ${fecha}\nXime Luxe - Bot`;
+global.gt = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
+global.mysticbot = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
 global.channel = 'https://whatsapp.com/channel/0029Vaein6eInlqIsCXpDs3y';
-global.md = 'https://github.com/BrunoSobrino/TheMystic-Bot-MD';
-global.mysticbot = 'https://github.com/BrunoSobrino/TheMystic-Bot-MD';
+global.md = 'https://github.com/CrxstianEscobar/Test';
+global.mysticbot = 'https://github.com/CrxstianEscobar/Test';
 global.waitt = '*_[ ⏳ ] Cargando..._*';
 global.waittt = '*_[ ⏳ ] Cargando..._*';
 global.waitttt = '*_[ ⏳ ] Cargando..._*';
