@@ -41,11 +41,11 @@ global.imagen3 = fs.createReadStream('./src/assets/images/menu/languages/fr/menu
 global.imagen4 = fs.createReadStream('./src/assets/images/menu/languages/en/menu.png');
 global.imagen5 = fs.createReadStream('./src/assets/images/menu/languages/ru/menu.png');*/
 
-global.imagen1 = fs.readFileSync('./src/assets/images/menu/languages/es/menu.png');
-global.imagen2 = fs.readFileSync('./src/assets/images/menu/languages/pt/menu.png');
-global.imagen3 = fs.readFileSync('./src/assets/images/menu/languages/fr/menu.png')
-global.imagen4 = fs.readFileSync('./src/assets/images/menu/languages/en/menu.png')
-global.imagen5 = fs.readFileSync('./src/assets/images/menu/languages/ru/menu.png')
+global.imagen1 = fs.readFileSync('./src/assets/images/menu/languages/es/allmenu.png');
+global.imagen2 = fs.readFileSync('./src/assets/images/menu/languages/pt/allmenu.png');
+global.imagen3 = fs.readFileSync('./src/assets/images/menu/languages/fr/allmenu.png')
+global.imagen4 = fs.readFileSync('./src/assets/images/menu/languages/en/allmenu.png')
+global.imagen5 = fs.readFileSync('./src/assets/images/menu/languages/ru/allmenu.png')
 
 global.mods = [];
 
