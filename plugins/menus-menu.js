@@ -451,10 +451,10 @@ const handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, i
     const _translate = JSON.parse(fs.readFileSync(`./src/languages/${idioma}.json`))
     const tradutor = _translate.plugins.menu_menu
 
-    conn.reply(m.chat, tradutor.texto1[29], m);
+    conn.reply(m.chat, tradutor.texto1[21], m);
   }
 };
-handler.command = /^(allmenu|allmenú)$/i;
+handler.command = /^(allmenu|allmenú|menucompleto)$/i;
 handler.exp = 50;
 handler.fail = null;
 export default handler;
