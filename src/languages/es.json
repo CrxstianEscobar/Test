@@ -2849,12 +2849,12 @@
         },
         "menu_anime": {
             "texto1": [
-                "`MENU ANIME`",
+                "`MENÚ ANIMES`",
                 "*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝙻 𝙼𝙴𝙽𝚄 𝚃𝙸𝙴𝙽𝙴 𝚄𝙽 𝙴𝚁𝚁𝙾𝚁 𝚈 𝙽𝙾 𝙵𝚄𝙴 𝙿𝙾𝚂𝙸𝙱𝙻𝙴 𝙴𝙽𝚅𝙸𝙰𝚁𝙻𝙾, 𝚁𝙴𝙿𝙾𝚁𝚃𝙴𝙻𝙾 𝙰𝙻 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃*"
             ]
         },
         "menu_audios": {
-            "texto1": "𝙴𝚂𝙲𝚁𝙸𝙱𝙴 𝙻𝙰𝚂 𝚂𝙸𝙶𝚄𝙸𝙴𝙽𝚃𝙴𝚂 𝙿𝙰𝙻𝙰𝙱𝚁𝙰𝚂 𝙾 𝙵𝚁𝙰𝚂𝙴𝚂 𝚂𝙸𝙽 𝙽𝙸𝙽𝙶𝚄𝙽 𝙿𝚁𝙴𝙵𝙸𝙹𝙾 (#, /, *, .)",
+            "texto1": "`MENÚ AUDIOS",
             "texto2": "`*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝙻 𝙼𝙴𝙽𝚄 𝚃𝙸𝙴𝙽𝙴 𝚄𝙽 𝙴𝚁𝚁𝙾𝚁 𝚈 𝙽𝙾 𝙵𝚄𝙴 𝙿𝙾𝚂𝙸𝙱𝙻𝙴 𝙴𝙽𝚅𝙸𝙰𝚁𝙻𝙾, 𝚁𝙴𝙿𝙾𝚁𝚃𝙴𝙻𝙾 𝙰𝙻 𝙿𝚁𝙾𝙿𝙸𝙴𝚃𝙰𝚁𝙸𝙾 𝙳𝙴𝙻 𝙱𝙾𝚃*"
         },
         "menu_caja_fuerte": {
@@ -2890,6 +2890,42 @@
                 "*<texto/comando/palabra clave>*_",
                 "*<texto/comando/palabra clave>*_",
                 "*<texto/comando/palabra clave>*_"
+            ]
+        },
+        "menu_list": {
+            "texto1": [
+                "`🤍`",
+                "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
+            ]
+        },
+        "menu_audef": {
+            "texto1": [
+                "`🤍`",
+                "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
+            ]
+        },
+        "menu_ff": {
+            "texto1": [
+                "`MENÚ FREE FIRE`",
+                "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
+            ]
+        },
+        "menu_logos": {
+            "texto1": [
+                "`MENÚ LOGOS`",
+                "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
+            ]
+        },
+        "menu_owner": {
+            "texto1": [
+                "`MENÚ OWNER`",
+                "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
+            ]
+        },
+        "menu_rec": {
+            "texto1": [
+                "`MENÚ RECURSOS`",
+                "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
             ]
         },
         "menu_labiblia": {
