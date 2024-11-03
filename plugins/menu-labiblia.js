@@ -27,7 +27,7 @@ if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `${tradutor.texto1[0]} 
     const document = doc[Math.floor(Math.random() * doc.length)];
     const str = `> ⓘ ¡Hola!, ${taguser}
 > ${date}
-*˚₊·˚₊· ͟͟͞͞➳❥ _Akane Fayrxz_*
+*˚₊·˚₊· ͟͟͞͞➳❥ _Xime Luxe Bot_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
 *│* 
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
