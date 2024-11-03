@@ -2894,13 +2894,13 @@
         },
         "menu_list": {
             "texto1": [
-                "`🤍`",
+                "`LISTA DE MENÚS`",
                 "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
             ]
         },
         "menu_audef": {
             "texto1": [
-                "`🤍`",
+                "`MENÚ AUD EFECT`",
                 "*[ ℹ️ ] Este menu tiene un error interno, por lo cual no fue posible enviarlo."
             ]
         },
