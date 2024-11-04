@@ -20,12 +20,12 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const document = doc[Math.floor(Math.random() * doc.length)];
     const str = `> ⓘ ¡Hola!, ${taguser}
 > ${date}
-*˚₊·˚₊· ͟͟͞͞➳❥ _Akane Fayrxz_*
+*˚₊·˚₊· ͟͟͞͞➳❥ _Xime Luxe Bot_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
 *│* 
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
 *⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
-*╭┄⊰ =͟͟͞͞ MENU AUD EFFECTS*
+*╭┄⊰* ${tradutor.texto1[0]}
 *│* ⓘ Responde a un audio.
 *│* დ _.bass_
 *│* დ _.blown_
