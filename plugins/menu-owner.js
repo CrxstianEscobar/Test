@@ -14,12 +14,12 @@ const handler = async (m, {conn, usedPrefix}) => {
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     const str = `> ⓘ ¡Hola!, ${taguser}
 > ${date}
-*˚₊·˚₊· ͟͟͞͞➳❥ _Akane Fayrxz_*
+*˚₊·˚₊· ͟͟͞͞➳❥ _Xime Luxe Bot_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
 *│* 
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
 *⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
-*╭┄⊰ =͟͟͞͞ MENÚ OWNER*
+*╭┄⊰* ${tradutor.texto1[0]}
 *│* დ _.dsowner_
 *│* დ _.setprefix *prefijo*_
 *│* დ _.resetprefix_
