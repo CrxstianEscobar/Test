@@ -21,12 +21,12 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const document = doc[Math.floor(Math.random() * doc.length)];
     const str = `> ⓘ ¡Hola!, ${taguser}
 > ${date}
-*˚₊·˚₊· ͟͟͞͞➳❥ _Akane Fayrxz_*
+*˚₊·˚₊· ͟͟͞͞➳❥ _Xime Luxe Bot_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
 *│* 
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
 *⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
-*╭┄⊰ =͟͟͞͞ MENÚ DE RECURSOS*
+*╭┄⊰* ${tradutor.texto1[0]}
 *│* დ _.spamapk_
 *│* დ _.spamcomu_
 *│* დ _.spam2_
