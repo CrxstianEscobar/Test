@@ -8,7 +8,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   const tradutor = _translate.plugins.menu_list
 
   try {
-    const pp = imagen11;
+    const pp = imagen4;
     //const img = './Menumenu.jpg';
     const d = new Date(new Date + 3600000);
     const locale = 'es';
