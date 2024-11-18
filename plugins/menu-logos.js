@@ -8,7 +8,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   const tradutor = _translate.plugins.menu_logos
 
   try {
-    const pp = imagen12;
+    const pp = imagen7;
     const d = new Date(new Date + 3600000);
     const locale = 'es';
     const date = d.toLocaleDateString(locale, {day: 'numeric', month: 'long', year: 'numeric'});
