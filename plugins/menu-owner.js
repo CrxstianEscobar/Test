@@ -5,7 +5,7 @@ const handler = async (m, {conn, usedPrefix}) => {
   const _translate = JSON.parse(fs.readFileSync(`./src/languages/${idioma}.json`))
   const tradutor = _translate.plugins.menu_owner
 
-  const pp = imagen13;
+  const pp = imagen8;
   try {
   } catch (e) {
   } finally {
