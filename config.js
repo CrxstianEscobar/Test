@@ -27,8 +27,8 @@ global.prems = ['51995386439'];
 // API
 global.BASE_API_DELIRIUS = "https://deliriussapi-oficial.vercel.app";
 
-global.packname = 'Xɪᴍᴇ Lᴜxᴇл - MD\n             ʙʏ\n Hᴇʌᴠᴇлʟʏ Ƭᴇᴀᴍ';
-global.author = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
+global.packname = 'Xɪᴍᴇ Lᴜxᴇ - MD\n             ʙʏ\n Hᴇʌᴠᴇлʟʏ Ƭᴇᴀᴍ';
+global.author = '@𝑈𝑠𝑥𝑟.𝐶𝑟𝑥𝑥𝑠 🥀';
 global.wm = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
 global.titulowm = '𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿';
 global.titulowm2 = `𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿`
