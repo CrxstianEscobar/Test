@@ -98,7 +98,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 *⎔ _Experiencia:_* _${exp}_
 *⎔ _Rango:_* _${role}_
 *⎔ _Diamantes:_* _${limit}_
-*⎔ _ShadowCoins:_* _${money}_
+*⎔ _LuxeCoins:_* _${money}_
 *⎔ _Tokens:_* _${joincount}_
 *⎔ _Premium:_* ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌') || ''}
 ㅤ· · ────── ·•· ────── · · 
@@ -111,7 +111,6 @@ ${readMore}
 *│* დ _.menuaudios_
 *│* დ _.menulogos_
 *│* დ _.menuowner_
-*│* დ _.audeffects_
 *│* დ _.menurec_
 *│* დ _.menu18_
 *│* დ _.menuff_
