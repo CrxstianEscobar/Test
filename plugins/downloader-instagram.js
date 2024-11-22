@@ -1,47 +1,27 @@
-import { snapsave } from '@bochilteam/scraper'
 
-let handler = async (m, { conn, args }) => {
-    if (!args[0]) throw m.reply('✧ Ingresa el link de *Instagram*')
-    const sender = m.sender.split('@')[0];
-    const url = args[0];
+import fetch from 'node-fetch'
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+    if (!args[0]) throw `✳️ ${mssg.useCmd}\n *${usedPrefix + command}* https://www.instagram.com/p/CYHeKxyMj-J/?igshid=YmMyMTA2M2Y=`
+    m.react(rwait)
 
-    m.reply(wait);
+try {
+    let res = await fetch(global.API('fgmods', '/api/downloader/igdl', { url: args[0] }, 'apikey'))
+    if (!res.ok) throw `❎ ${mssg.error} ` 
+    let data = await res.json()
 
-    try {
-        const data = await snapsave(url);
-        
-        // Find the HD video
-        let video = data.results[0];
-
-        if (video) {
-            const videoBuffer = await fetch(video.url).then(res => res.buffer());
-            const caption = `✧ Para: @${sender}`;
-
-            await conn.sendMessage(
-                m.chat, {
-                    video: videoBuffer,
-                    mimetype: "video/mp4",
-                    fileName: `video.mp4`,
-                    caption: caption,
-                    mentions: [m.sender],
-                }, {
-                    quoted: m
-                }
-            );
-        } else {
-            throw m.reply('Error');
-        }
-    } catch (error) {
-        console.error('Handler Error:', error);
-        conn.reply(m.chat, `Error: ${error}`, m);
+    for (let item of data.result) {
+        conn.sendFile(m.chat, item.url, 'igdl.jpg', `✅ ${mssg.result}`, m)
     }
+
+
+    } catch (error) {
+        m.reply(`❎ ${mssg.error}`)
+    }
+
 }
-
-handler.help = ['ig'].map(v => v + ' *<link>*')
-handler.tags = ['downloader']
-
-handler.command = /^(ig(dl)?)$/i
-
-handler.register = true
+handler.help = ['instagram <link ig>']
+handler.tags = ['dl']
+handler.command = ['ig', 'igdl', 'instagram', 'igimg', 'igvid']
+handler.diamond = true
 
 export default handler
