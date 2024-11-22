@@ -15,7 +15,7 @@ const handler = async (m, {conn, args, command, usedPrefix}) => {
   if (!enviando) enviando = true;
   try {
     
-    const response = await fetch(`${global.MyApiRestBaseUrl}/api/facebook?url=${args[0]}&apikey=${global.MyApiRestApikey}`);
+    const response = await fetch(`https://api.ryzendesu.vip/api/downloader/fbdl?url=${encodeURIComponent(url)}`);
     const data = await response.json();
 
     if (data?.status === true) {
