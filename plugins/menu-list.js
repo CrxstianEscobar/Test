@@ -102,9 +102,10 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 *⎔ _Tokens:_* _${joincount}_
 *⎔ _Premium:_* ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌') || ''}
 ㅤ· · ────── ·•· ────── · · 
-𝙓𝙞𝙢𝙚 𝙇𝙪𝙭𝙚 - 𝙈𝘿 : 𝙐𝙨𝙭𝙧 𝘾𝙧𝙭𝙭𝙨 🥀
-- Para el menú completo usa *.allmenu*
+_Xɪᴍᴇ Lᴜxᴇ ᴍᴅ : Usxʀ Cʀxxs 🌙_
+- Pᴀʀᴀ ᴇʟ ᴍᴇɴᴜ ᴄᴏᴍᴘʟᴇᴛᴏ ᴜsᴀ *.ᴀʟʟᴍᴇɴᴜ*
 ㅤ· · ────── ·•· ────── · · 
+${readMore}
 *╭┄⊰* ${tradutor.texto1[0]}
 *│* დ _.menuanimes_
 *│* დ _.menuaudios_
