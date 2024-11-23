@@ -19,8 +19,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     conn.sendMessage(m.chat, { 
         image: { url: search.all[0].thumbnail }, 
         caption: body
-    }, { quoted: `🗿` });
-    m.react('react1')
+    });
 
     let res = await dl_vid(urls)
     let type = isVideo ? 'video' : 'audio';
@@ -30,7 +29,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
         [type]: { url: isVideo ? video : audio }, 
         gifPlayback: false, 
         mimetype: isVideo ? "video/mp4" : "audio/mpeg" 
-    }, { quoted: m });
+    });
 }
 
 handler.command = ['play', 'play2'];
@@ -53,7 +52,7 @@ async function dl_vid(url) {
     });
 
     if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`error`);
     }
 
     const data = await response.json();
