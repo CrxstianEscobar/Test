@@ -1,22 +1,25 @@
-export default handler
-
 import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-  if (!args[0]) throw `✳️ Usa el comando correctamente\n *${usedPrefix + command}* https://www.instagram.com/p/CYHeKxyMj-J/?igshid=YmMyMTA2M2Y=`
-  m.react(rwait)
-  try {
-    let res = await fetch(global.API('fgmods', '/api/downloader/igdl', { url: args[0] }, 'apikey'))
-    if (!res.ok) throw '❎ Ocurrió un error'
-    let data = await res.json()
-    for (let item of data.result) {
-      conn.sendFile(m.chat, item.url, 'igdl.jpg', '✅ Resultado', m)
-    }
-  } catch (error) {
-    m.reply('❎ Ocurrió un error')
-  }
-}
+let handler = async (m, { conn, args }) => {
+    if (!args[0]) throw m.reply('✧ Ingresa el link de *Instagram*')
+    const sender = m.sender.split('@')[0];
+    const url = args[0];
 
+try {
+    let res = await fetch(global.API('fgmods', '/api/downloader/igdl', { url: args[0] }, 'apikey'))
+    if (!res.ok) throw `❎ ${mssg.error} ` 
+    let data = await res.json()
+
+    for (let item of data.result) {
+        conn.sendFile(m.chat, item.url, 'igdl.jpg', `✅ ${mssg.result}`, m)
+    }
+
+
+    } catch (error) {
+        m.reply(`❎ ${mssg.error}`)
+    }
+
+}
 handler.help = ['instagram <link ig>']
 handler.tags = ['dl']
 handler.command = ['ig', 'igdl', 'instagram', 'igimg', 'igvid']
