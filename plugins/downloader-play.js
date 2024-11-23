@@ -1,130 +1,61 @@
-import yts from 'yt-search';
+import yts from 'yt-search' 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw `\`\`\`[🌠] Por favor ingresa un texto. Ejemplo:\n${usedPrefix + command} Did i tell u that i miss you\`\`\``;
+    if (!text) throw `Ejemplo: ${usedPrefix + command} Daylight`,m ,rcanal;
 
-  const isVideo = /vid$/.test(command);
-  const search = await yts(text);
+    const randomReduction = Math.floor(Math.random() * 5) + 1;
+    let search = await yts(text);
+    let isVideo = /play2$/.test(command);
+    let urls = search.all[0].url;
+    let body = `\`🌸 YouTube Play. 🌸\`
 
-  if (!search.all || search.all.length === 0) {
-    throw "No se encontraron resultados para tu búsqueda.";
-  }
+    *🌹 Título:* ${search.all[0].title}
+    *👀 Vistas:* ${search.all[0].views}
+    *🕑 Duración:* ${search.all[0].timestamp}
+    *📆 Subido:* ${search.all[0].ago}
+    *🔗 Url:* ${urls}
 
-  const videoInfo = search.all[0];
-  const body = `\`\`\`⊜─⌈ 💿 ◜YouTube Play◞ 💿 ⌋─⊜
+[ ℹ️ ] *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`;
+    
+    conn.sendMessage(m.chat, { 
+        image: { url: search.all[0].thumbnail }, 
+        caption: body
+    }, { quoted: m,rcanal });
+    m.react('react1')
 
-    ≡ Título : » ${videoInfo.title}
-    ≡ Views : » ${videoInfo.views}
-    ≡ Duration : » ${videoInfo.timestamp}
-    ≡ Uploaded : » ${videoInfo.ago}
-    ≡ URL : » ${videoInfo.url}
-
-# 🌠 Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...\`\`\``;
-
-  conn.sendMessage(m.chat, {
-    image: { url: videoInfo.thumbnail },
-    caption: body,
-  }, { quoted: m.chat });
-
-  let result;
-  try {
-    if (command === 'play') {
-      result = await mp3(videoInfo.url);
-    } else if (command === 'playvid') {
-      result = await mp4(videoInfo.url);
-    } else {
-      throw "Comando no reconocido.";
-    }
-
-    if (!result.status) throw result.msg;
-
-    conn.sendMessage(m.chat, {
-      [isVideo ? 'video' : 'audio']: { url: result.media },
-      mimetype: isVideo ? "video/mp4" : "audio/mpeg",
-      caption: `Título: ${result.title}\nURL: ${result.url}`,
+    let res = await dl_vid(urls)
+    let type = isVideo ? 'video' : 'audio';
+    let video = res.data.mp4;
+    let audio = res.data.mp3;
+    conn.sendMessage(m.chat, { 
+        [type]: { url: isVideo ? video : audio }, 
+        gifPlayback: false, 
+        mimetype: isVideo ? "video/mp4" : "audio/mpeg" 
     }, { quoted: m });
+}
 
-  } catch (error) {
-    throw error.msg || "Ocurrió un error al procesar tu solicitud.";
-  }
-};
-
-handler.command = ['play', 'playvid'];
-handler.help = ['play', 'playvid'];
-handler.tags = ['dl'];
-handler.diamond = 4;
-
+handler.command = ['play', 'play2'];
+handler.help = ['play1', 'play2'];
+handler.tags = ['descargas'];
+//handler.group = true
 export default handler;
 
-const getVideoId = (url) => {
-  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
-  const match = url.match(regex);
-  if (match) {
-    return match[1];
-  }
-  throw new Error("Invalid YouTube URL");
-};
-
-async function acc(url) {
-  const respuesta = await axios.get(`http://tinyurl.com/api-create.php?url=${url}`);
-  return respuesta.data;
-}
-
-async function mp3(url, { quality = '192' } = {}) {
-  try {
-    const videoId = getVideoId(url);
-    const { videos } = await yts(videoId);
-    const videoData = videos[0];
-
-    const data = new URLSearchParams({ videoid: videoId, downtype: 'mp3', vquality: quality });
-    const response = await axios.post('https://api-cdn.saveservall.xyz/ajax-v2.php', data, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+async function dl_vid(url) {
+    const response = await fetch('https://shinoa.us.kg/api/download/ytdl', {
+        method: 'POST',
+        headers: {
+            'accept': '*/*',
+            'api_key': 'free',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            text: url,
+        })
     });
 
-    const mp3Link = response.data.url;
-    return {
-      status: true,
-      creator: "WillZek",
-      msg: "¡Descarga de contenido con éxito!",
-      title: videoData.title,
-      thumbnail: videoData.image,
-      url: `https://youtu.be/${videoId}`,
-      media: await acc(mp3Link),
-    };
-  } catch (error) {
-    return {
-      status: false,
-      msg: "¡Error al recuperar datos!",
-      err: error.message,
-    };
-  }
-}
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
 
-async function mp4(url, { quality = '480' } = {}) {
-  try {
-    const videoId = getVideoId(url);
-    const { videos } = await yts(videoId);
-    const videoData = videos[0];
-
-    const data = new URLSearchParams({ videoid: videoData.videoId, downtype: 'mp4', vquality: quality });
-    const response = await axios.post('https://api-cdn.saveservall.xyz/ajax-v2.php', data, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
-    });
-
-    const mp4Link = response.data.url;
-    return {
-      status: true,
-      creator: "WillZek",
-      msg: "¡Descarga de contenido con éxito!",
-      title: videoData.title,
-      thumbnail: videoData.image,
-      url: `https://youtu.be/${videoId}`,
-      media: await acc(mp4Link),
-    };
-  } catch (error) {
-    return {
-      status: false,
-      msg: "¡Error al recuperar datos!",
-      err: error.message,
-    };
-  }
-}
+    const data = await response.json();
+    return data;
+      }
