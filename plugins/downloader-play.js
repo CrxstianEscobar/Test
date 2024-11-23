@@ -1,84 +1,130 @@
-import yts from 'yt-search'
-import fs from 'fs'
-import os from 'os'
-import axios from 'axios'
+import yts from 'yt-search';
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) throw `\`\`\`[🌠] Por favor ingresa un texto. Ejemplo:\n${usedPrefix + command} Did i tell u that i miss you\`\`\``;
 
-const handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw m.reply(`✧ Ejemplo de uso: ${usedPrefix}${command} Joji - Ew`);
-
+  const isVideo = /vid$/.test(command);
   const search = await yts(text);
-  const vid = search.videos[0];
-  if (!vid) throw m.reply('Data no encontrada, intenta con otro titulo');
 
-  const { title, thumbnail, timestamp, views, ago, url } = vid;
+  if (!search.all || search.all.length === 0) {
+    throw "No se encontraron resultados para tu búsqueda.";
+  }
 
-await conn.sendMessage(m.chat, { react: { text: '🕒', key: m.key }})
-//  await conn.sendMessage(m.chat, { image: { url: thumbnail }, caption: wait }, { quoted: m });
+  const videoInfo = search.all[0];
+  const body = `\`\`\`⊜─⌈ 💿 ◜YouTube Play◞ 💿 ⌋─⊜
 
+    ≡ Título : » ${videoInfo.title}
+    ≡ Views : » ${videoInfo.views}
+    ≡ Duration : » ${videoInfo.timestamp}
+    ≡ Uploaded : » ${videoInfo.ago}
+    ≡ URL : » ${videoInfo.url}
+
+# 🌠 Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...\`\`\``;
+
+  conn.sendMessage(m.chat, {
+    image: { url: videoInfo.thumbnail },
+    caption: body,
+  }, { quoted: fkontak });
+
+  let result;
   try {
-    const response = await axios.get(`https://api.ryzendesu.vip/api/downloader/ytmp3?url=${encodeURIComponent(url)}`);
-    const downloadUrl = response.data.url;
+    if (command === 'play') {
+      result = await mp3(videoInfo.url);
+    } else if (command === 'playvid') {
+      result = await mp4(videoInfo.url);
+    } else {
+      throw "Comando no reconocido.";
+    }
 
-    if (!downloadUrl) throw new Error('Audio URL not found');
+    if (!result.status) throw result.msg;
 
-    const tmpDir = os.tmpdir();
-    const filePath = `${tmpDir}/${title}.mp3`;
+    conn.sendMessage(m.chat, {
+      [isVideo ? 'video' : 'audio']: { url: result.media },
+      mimetype: isVideo ? "video/mp4" : "audio/mpeg",
+      caption: `Título: ${result.title}\nURL: ${result.url}`,
+    }, { quoted: m });
 
-    const audioResponse = await axios({
-      method: 'get',
-      url: downloadUrl,
-      responseType: 'stream',
-    });
-
-    const writableStream = fs.createWriteStream(filePath);
-    audioResponse.data.pipe(writableStream);
-
-    writableStream.on('finish', async () => {
-      await conn.sendMessage(m.chat, {
-        audio: {
-          url: filePath
-        },
-        mimetype: 'audio/mpeg',
-        fileName: `${title}.mp3`,
-        caption: `Titilo: ${title}\nPublicado: ${ago}`,
-        contextInfo: {
-          externalAdReply: {
-            showAdAttribution: true,
-            mediaType: 2,
-            mediaUrl: url,
-            title: title,
-            body: 'Audio Download',
-            sourceUrl: url,
-            thumbnail: await (await conn.getFile(thumbnail)).data,
-          },
-        },
-      }, { quoted: m });
-await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }})
-
-      fs.unlink(filePath, (err) => {
-        if (err) {
-          console.error(`Failed to delete audio file: ${err}`);
-        } else {
-          console.log(`Deleted audio file: ${filePath}`);
-        }
-      });
-    });
-
-    writableStream.on('error', (err) => {
-      console.error(`Failed to write audio file: ${err}`);
-      m.reply('Failed to download audio');
-    });
   } catch (error) {
-    console.error('Error:', error.message);
-    throw `Error: ${error.message}. Please check the URL and try again.`;
+    throw error.msg || "Ocurrió un error al procesar tu solicitud.";
   }
 };
 
-handler.help = ['play'].map((v) => v + ' *<consulta>*');
-handler.tags = ['downloader'];
-handler.command = /^(play)$/i;
+handler.command = ['play', 'playvid'];
+handler.help = ['play', 'playvid'];
+handler.tags = ['dl'];
+handler.diamond = 4;
 
-handler.register = true
-handler.disable = false
+export default handler;
 
-export default handler
+const getVideoId = (url) => {
+  const regex = /(?:v=|\/)([0-9A-Za-z_-]{11}).*/;
+  const match = url.match(regex);
+  if (match) {
+    return match[1];
+  }
+  throw new Error("Invalid YouTube URL");
+};
+
+async function acc(url) {
+  const respuesta = await axios.get(`http://tinyurl.com/api-create.php?url=${url}`);
+  return respuesta.data;
+}
+
+async function mp3(url, { quality = '192' } = {}) {
+  try {
+    const videoId = getVideoId(url);
+    const { videos } = await yts(videoId);
+    const videoData = videos[0];
+
+    const data = new URLSearchParams({ videoid: videoId, downtype: 'mp3', vquality: quality });
+    const response = await axios.post('https://api-cdn.saveservall.xyz/ajax-v2.php', data, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    });
+
+    const mp3Link = response.data.url;
+    return {
+      status: true,
+      creator: "WillZek",
+      msg: "¡Descarga de contenido con éxito!",
+      title: videoData.title,
+      thumbnail: videoData.image,
+      url: `https://youtu.be/${videoId}`,
+      media: await acc(mp3Link),
+    };
+  } catch (error) {
+    return {
+      status: false,
+      msg: "¡Error al recuperar datos!",
+      err: error.message,
+    };
+  }
+}
+
+async function mp4(url, { quality = '480' } = {}) {
+  try {
+    const videoId = getVideoId(url);
+    const { videos } = await yts(videoId);
+    const videoData = videos[0];
+
+    const data = new URLSearchParams({ videoid: videoData.videoId, downtype: 'mp4', vquality: quality });
+    const response = await axios.post('https://api-cdn.saveservall.xyz/ajax-v2.php', data, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
+    });
+
+    const mp4Link = response.data.url;
+    return {
+      status: true,
+      creator: "WillZek",
+      msg: "¡Descarga de contenido con éxito!",
+      title: videoData.title,
+      thumbnail: videoData.image,
+      url: `https://youtu.be/${videoId}`,
+      media: await acc(mp4Link),
+    };
+  } catch (error) {
+    return {
+      status: false,
+      msg: "¡Error al recuperar datos!",
+      err: error.message,
+    };
+  }
+}
