@@ -7,16 +7,16 @@ let handler = async (m, { conn, args }) => {
 
 try {
     let res = await fetch(global.API('fgmods', '/api/downloader/igdl', { url: args[0] }, 'apikey'))
-    if (!res.ok) throw `❎ ${mssg.error} ` 
+    if (!res.ok) throw `error` 
     let data = await res.json()
 
     for (let item of data.result) {
-        conn.sendFile(m.chat, item.url, 'igdl.jpg', `✅ ${mssg.result}`, m)
+        conn.sendFile(m.chat, item.url, 'igdl.jpg', `enviado..`, m)
     }
 
 
     } catch (error) {
-        m.reply(`❎ ${mssg.error}`)
+        m.reply(`error`)
     }
 
 }
