@@ -19,7 +19,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     conn.sendMessage(m.chat, { 
         image: { url: search.all[0].thumbnail }, 
         caption: body
-    }, { quoted: m,rcanal });
+    }, { quoted: `🗿` });
     m.react('react1')
 
     let res = await dl_vid(urls)
