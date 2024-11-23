@@ -36,8 +36,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     });
 }
 
-handler.command = ['play1', 'playvid'];
-handler.help = ['play1', 'playvid'];
+handler.command = ['xplay', 'xplayvid'];
+handler.help = ['xplay', 'xplayvid'];
 handler.tags = ['descargas'];
 export default handler;
 
