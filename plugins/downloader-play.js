@@ -1,20 +1,24 @@
 import yts from 'yt-search' 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw `Ejemplo: ${usedPrefix + command} Daylight`;
+    if (!text) throw `Ejemplo: ${usedPrefix + command} Enemy Tommoee Profitt`;
 
     const randomReduction = Math.floor(Math.random() * 5) + 1;
     let search = await yts(text);
-    let isVideo = /play2$/.test(command);
+    let isVideo = /vid$/.test(command);
     let urls = search.all[0].url;
-    let body = `\`🌸 YouTube Play. 🌸\`
+    let body = `\`🌸 YouTube Play - Yuki Suou 🌸\`
 
-    *🌹 Título:* ${search.all[0].title}
-    *👀 Vistas:* ${search.all[0].views}
-    *🕑 Duración:* ${search.all[0].timestamp}
-    *📆 Subido:* ${search.all[0].ago}
-    *🔗 Url:* ${urls}
+ ➢   *Título:* ${search.all[0].title}
+     
+ ➢   *Vistas:* ${search.all[0].views}
+      
+ ➢   *Duración:* ${search.all[0].timestamp}  
+      
+ ➢   *Subido:* ${search.all[0].ago} 
+      
+ ➢   *Url:* ${urls}
 
-[ ℹ️ ] *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`;
+🌸 *Su ${isVideo ? 'Video' : 'Audio'} se está enviando, espere un momento...*`;
     
     conn.sendMessage(m.chat, { 
         image: { url: search.all[0].thumbnail }, 
@@ -32,10 +36,9 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     });
 }
 
-handler.command = ['play', 'play2'];
-handler.help = ['play1', 'play2'];
+handler.command = ['play1', 'playvid'];
+handler.help = ['play1', 'playvid'];
 handler.tags = ['descargas'];
-//handler.group = true
 export default handler;
 
 async function dl_vid(url) {
@@ -57,4 +60,4 @@ async function dl_vid(url) {
 
     const data = await response.json();
     return data;
-      }
+                                       }
