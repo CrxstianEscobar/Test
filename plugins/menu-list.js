@@ -102,7 +102,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
 *⎔ _Tokens:_* _${joincount}_
 *⎔ _Premium:_* ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌') || ''}
 ㅤ· · ────── ·•· ────── · · 
-_Xɪᴍᴇ Lᴜxᴇ ᴍᴅ : Usxʀ Cʀxxs 🌙_
+_*Xɪᴍᴇ Lᴜxᴇ ᴍᴅ : Usxʀ Cʀxxs 🌙*_
 - Pᴀʀᴀ ᴇʟ ᴍᴇɴᴜ ᴄᴏᴍᴘʟᴇᴛᴏ ᴜsᴀ *.ᴀʟʟᴍᴇɴᴜ*
 ㅤ· · ────── ·•· ────── · · 
 ${readMore}
